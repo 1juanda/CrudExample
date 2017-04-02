@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Crear Categoria</title>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+
+  </head>
+  <body>
+
+  <div class="container">
+  <table id="dt_listaCategorias" class="display">
+  <thead>
+  <tr>
+  <th>ID</th>
+  <th>Categotia</th>
+  <th> </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% listaCategorias.forEach(function(categoria){ %>
+  <tr>
+    <td><%= categoria.category_id %></td>
+    <td><%= categoria.category_name %></td>
+    <td>
+    <form method ="POST" action ="/eliminarCategoria">
+    <input type ="hidden" id="id" name ="id" vale="<%= categoria.category_id %>">
+  <button type="submit" class="btn btn-danger btn-xs">
+    <span class="glyphicon glyphicon-trash"></span>Eliminar
+  </button>
+    </form>
+    </td>
+  </tr>
+  <% }); %>
+  </tbody>
+  </table>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $('#dt_listaCategorias').DataTable();
+    });
+    </script>
+  </body>
+</html>
